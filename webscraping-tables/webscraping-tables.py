@@ -15,7 +15,9 @@ league_table = soup.find('table',class_='standing-table__table callfn').find('tb
 
 for row in league_table.find_all('tr'):
     pl_team = row.find('td', class_='standing-table__cell standing-table__cell--name').text.strip()
-    print(pl_team)
+    # print(pl_team)
+    pl_points = row.find_all('td', class_='standing-table__cell')[9].text
+    print(pl_team, pl_points)
 
 
 
