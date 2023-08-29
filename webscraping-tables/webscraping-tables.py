@@ -9,10 +9,15 @@ req = requests.get(URL)
 
 soup = BeautifulSoup(req.content, 'html.parser')
 
-league_table = soup.find_all('table')
+league_table = soup.find('table',class_='standing-table__table callfn').find('tbody')
 
-for table in league_table:
-    city = table.find_all('a')
-    print(city.get_text())
+# print(league_table)
+
+for row in league_table.find_all('tr'):
+    pl_team = row.find('td', class_='standing-table__cell standing-table__cell--name').text.strip()
+    print(pl_team)
+
+
+
 
 
